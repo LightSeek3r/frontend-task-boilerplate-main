@@ -34,7 +34,7 @@ export const App = (): ReactElement => {
                 className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
             />
 
-            <div className="mx-auto max-w-4xl px-6 py-12">
+            <div className="mx-auto max-w-4xl px-6 pt-12">
                 <div className="mb-8 text-center">
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900">
                         File Upload Demo
