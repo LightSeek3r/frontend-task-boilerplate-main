@@ -38,6 +38,8 @@ export const Button = ({
         <button
             className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
             disabled={disabled}
+            aria-disabled={disabled}
+            aria-label={children && typeof children === 'string' ? children : undefined} 
             {...props}
         >
             {children}
