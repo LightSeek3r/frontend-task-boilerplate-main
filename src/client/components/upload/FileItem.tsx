@@ -5,12 +5,13 @@ import { ProgressBar } from '../ui/ProgressBar';
 
 interface FileItemProps {
     file: UploadFile;
+    onRemove: (fileId: string) => void;
 }
 
 /**
  * Individual file item component showing upload status and progress
  */
-export const FileItem = ({ file }: FileItemProps) => {
+export const FileItem = ({ file, onRemove }: FileItemProps) => {
     const getStatusIcon = () => {
         switch (file.status) {
             case UploadStatus.SUCCESS:
@@ -118,6 +119,28 @@ export const FileItem = ({ file }: FileItemProps) => {
                                 {formatFileSize(file.file.size)} • {getStatusText()}
                             </p>
                         </div>
+
+                        <Button
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => onRemove(file.id)}
+                            aria-label={`Remove ${file.file.name}`}
+                            className="flex-shrink-0"
+                        >
+                            <svg
+                                className="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </Button>
                     </div>
 
                     {file.status === UploadStatus.UPLOADING && (
